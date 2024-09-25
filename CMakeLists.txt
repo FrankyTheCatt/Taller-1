@@ -10,4 +10,6 @@ add_executable(Ayudantia69 main.cpp
         Revista.h
         Revista.cpp
         Usuario.h
-        Usuario.cpp)
+        Usuario.cpp
+        Sistema.h
+        Sistema.cpp)
