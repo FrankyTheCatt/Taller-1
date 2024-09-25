@@ -9,11 +9,11 @@
 
 class Revista : public MaterialBibliografico{
 private:
-    int numeroEdicion;
-    int mesPublicacion;
+    std::string numeroEdicion;
+    std::string mesPublicacion;
 public:
-    Revista(const std::string &nombre, const std::string &isbn, const std::string &autor, bool estado,
-            const int &numeroEdicion, int mesPublicacion);
+    Revista(const std::string &nombre, const std::string &isbn, const std::string &autor,
+            const std::string &numeroEdicion, std::string mesPublicacion);
 };
 
 

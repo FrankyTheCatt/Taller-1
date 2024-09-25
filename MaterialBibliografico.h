@@ -12,15 +12,12 @@ private:
     std::string nombre;
     std::string isbn;
     std::string autor;
-    bool estado;
 
 public:
-    MaterialBibliografico(const std::string &nombre, const std::string &isbn, const std::string &autor, bool estado);
+    MaterialBibliografico(const std::string &nombre, const std::string &isbn, const std::string &autor);
     std::string getNombre();
     std::string getIsbn();
     std::string getAutor();
-    bool getEstado() const;
-    void setEstado(bool estado);
 
     void mostrarInfo();
 

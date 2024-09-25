@@ -4,9 +4,9 @@
 
 #include "Revista.h"
 
-Revista::Revista(const std::string &nombre, const std::string &isbn, const std::string &autor, bool estado,
-             const int &numeroEdicion, const int mesPublicacion)
-    : MaterialBibliografico(nombre, isbn, autor, estado), numeroEdicion(numeroEdicion), mesPublicacion(mesPublicacion) {
+Revista::Revista(const std::string &nombre, const std::string &isbn, const std::string &autor,
+             const std::string &numeroEdicion, const std::string mesPublicacion)
+    : MaterialBibliografico(nombre, isbn, autor), numeroEdicion(numeroEdicion), mesPublicacion(mesPublicacion) {
 
 }
 

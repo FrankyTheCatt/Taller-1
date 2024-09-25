@@ -11,7 +11,7 @@ private:
 
 public:
     // Constructor de la clase derivada
-    Libro(const std::string &nombre, const std::string &isbn, const std::string &autor, bool estado,
+    Libro(const std::string &nombre, const std::string &isbn, const std::string &autor,
           const std::string &resumen, const std::string &fechapublicacion);
     void mostarInfo();
 };
