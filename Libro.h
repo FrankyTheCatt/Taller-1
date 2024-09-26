@@ -1,4 +1,3 @@
-// Libro.h
 #ifndef LIBRO_H
 #define LIBRO_H
 
@@ -10,10 +9,9 @@ private:
     std::string fechapublicacion;
 
 public:
-    // Constructor de la clase derivada
-    Libro(const std::string &nombre, const std::string &isbn, const std::string &autor,
-          const std::string &resumen, const std::string &fechapublicacion);
-    void mostarInfo();
+    Libro(const std::string &nombre, const std::string &isbn, const std::string &autor, const std::string &resumen,
+          int diff, const std::string &fechapublicacion);
+    void mostrarInfo() override;
 };
 
 #endif // LIBRO_H

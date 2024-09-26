@@ -1,14 +1,13 @@
 #include "Libro.h"
 #include <iostream>
 
-Libro::Libro(const std::string &nombre, const std::string &isbn, const std::string &autor, bool estado,
-             const std::string &resumen, const std::string &fechapublicacion)
-    : MaterialBibliografico(nombre, isbn, autor), resumen(resumen), fechapublicacion(fechapublicacion) {
-    this->resumen = resumen;
-    this->fechapublicacion = fechapublicacion;
+Libro::Libro(const std::string &nombre, const std::string &isbn, const std::string &autor, const std::string &resumen, int diff, const std::string &fechapublicacion)
+    : MaterialBibliografico(nombre, isbn, autor, diff), resumen(resumen), fechapublicacion(fechapublicacion) {
 }
 
-void MaterialBibliografico::mostarInfo() {
-    std::cout << "\tAutor: " << this->autor << std::endl;
-    std::cout << "\tIsbn: " << this->isbn << std::endl;
+void Libro::mostrarInfo() {
+    MaterialBibliografico::mostrarInfo();
+    std::cout << "\tResumen: " << this->resumen << std::endl;
+    std::cout << "\tFecha publicacion: " << this->fechapublicacion << std::endl;
+    std::cout << "\n" << std::endl;
 }

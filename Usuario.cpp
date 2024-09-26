@@ -1,11 +1,14 @@
 #include "Usuario.h"
 #include <iostream>
 
+#include "sistema.h"
+
 /**
  * Constructor de la clase Usuario
  * @param nombre Nombre del usuario en string
  * @param id Id del usuario en string
  */
+
 Usuario::Usuario(const std::string &nombre, const std::string &id) {
     this->nombre = nombre;
     this->id = id;
@@ -22,6 +25,13 @@ std::string Usuario::getId() {
 }
 
 
+MaterialBibliografico *buscarMaterialUser(std::string nombre) {
+    for (int i = 0; i < 5; i++) {
+
+
+    }
+}
+
 MaterialBibliografico *Usuario::prestarMaterial(MaterialBibliografico *material) {
     for (int i = 0; i < 5; i++) {
         if (biblioteca[i] == nullptr) {
@@ -33,9 +43,10 @@ MaterialBibliografico *Usuario::prestarMaterial(MaterialBibliografico *material)
     return nullptr;
 }
 
-MaterialBibliografico *Usuario::devolverMaterial(MaterialBibliografico *material) {
+MaterialBibliografico *Usuario::devolverMaterial(std::string material) {
+    MaterialBibliografico a = buscarMaterialUser(material);
     for (int i = 0; i < 5; i++) {
-        if (biblioteca[i] == material) {
+        if (biblioteca[i] == a) {
             biblioteca[i] = nullptr;
             return material;
         }
@@ -52,3 +63,7 @@ void Usuario::mostrarMaterialesPrestados() {
     }
 }
 
+void Usuario::mostrarInfo() {
+    std::cout << "Nombre: " << this->nombre << std::endl;
+    std::cout << "Id: " << this->id << std::endl;
+}
