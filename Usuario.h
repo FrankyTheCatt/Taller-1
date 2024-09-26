@@ -21,7 +21,8 @@ public:
 
     void mostrarMaterialesPrestados();
     void mostrarInfo();
-    MaterialBibliografico buscarMaterialUser(std::string string);
+
+    MaterialBibliografico *buscarMaterialUser(std::string string);
 };
 
 #endif

@@ -25,11 +25,13 @@ std::string Usuario::getId() {
 }
 
 
-MaterialBibliografico *buscarMaterialUser(std::string nombre) {
+MaterialBibliografico *Usuario::buscarMaterialUser(std::string nombre) {
     for (int i = 0; i < 5; i++) {
-
-
+        if (biblioteca[i] != nullptr && biblioteca[i]->getNombre() == nombre) {
+            return biblioteca[i];
+        }
     }
+    return nullptr;
 }
 
 MaterialBibliografico *Usuario::prestarMaterial(MaterialBibliografico *material) {
@@ -43,15 +45,19 @@ MaterialBibliografico *Usuario::prestarMaterial(MaterialBibliografico *material)
     return nullptr;
 }
 
-MaterialBibliografico *Usuario::devolverMaterial(std::string material) {
-    MaterialBibliografico a = buscarMaterialUser(material);
+MaterialBibliografico *Usuario::devolverMaterial(std::string nombreMaterial) {
+    MaterialBibliografico *material = buscarMaterialUser(nombreMaterial);
+    if (material == nullptr) {
+        std::cout << "No puedes devolver lo que no tienes..." << std::endl;
+        return nullptr;
+    }
     for (int i = 0; i < 5; i++) {
-        if (biblioteca[i] == a) {
+        if (biblioteca[i] == material) {
             biblioteca[i] = nullptr;
+            std::cout << "Material devuelto correctamente: " << nombreMaterial << std::endl;
             return material;
         }
     }
-    std::cout << "No puedes devolver lo que no tienes..." << std::endl;
     return nullptr;
 }
 
