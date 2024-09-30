@@ -1,13 +1,35 @@
 // main.cpp
 #include "sistema.h"
+#include <iostream>
+#include <string>
+#include <stdexcept>
 
+int leerInt(int ver) {
+    std::string str;
+    int x = 0;
 
-int leerInt() {
-    int x;
-    std::cin >> x;
-    std::cin.ignore();
+    while (true) {
+        std::cout << "\nIngrese una opcion: ";
+        std::getline(std::cin, str);
+        try {
+            x = std::stoi(str);
+            if (ver == 1) {
+                if (x >= 1 && x <= 6) {
+                    break;
+                }
+            }
+            return x;
+
+        }
+        catch (std::invalid_argument& e) {
+        }
+        catch (std::out_of_range& e) {
+        }
+    }
+
     return x;
 }
+
 
 std::string leerString() {
     std::string str;
@@ -34,11 +56,10 @@ int imprimirMenu() {
                  "4- Prestar y devolver material\n"
                  "5- Gestion de usuarios\n"
                  "6- Salir...\n";
-    std::cout << "Seleccione su opcion -> ";
-    return leerInt();
+    return leerInt(1);
 }
 
-int main() {
+void start() {
     int opcion;
     do {
         opcion = imprimirMenu();
@@ -47,8 +68,7 @@ int main() {
                 if (buscarEspacio() != -1) {
                     std::cout << "1- Libro " << std::endl;
                     std::cout << "2- Revista" << std::endl;
-                    std::cout << "Ingresa una opcion: ";
-                    int opcion1 = leerInt();
+                    int opcion1 = leerInt(0);
                     DatosComunes datos = leerDatosComunes();
 
                     if (opcion1 == 1) {
@@ -77,7 +97,7 @@ int main() {
                 std::cout << "1- Busqueda por autor" << std::endl;
                 std::cout << "2- Busqueda por titulo" << std::endl;
                 std::cout << "Ingrese una opcion -> " << std::endl;
-                int opcion1 = leerInt();
+                int opcion1 = leerInt(0);
                 if (opcion1 == 1) {
                     std::cout << "Ingrese el autor: ";
                     std::string autor = leerString();
@@ -94,7 +114,7 @@ int main() {
                 std::cout << "1. Pedir material" << std::endl;
                 std::cout << "2. Devolver material" << std::endl;
                 std::cout << "Ingresa una opcion -> ";
-                int opcion1 = leerInt();
+                int opcion1 = leerInt(0);
                 if (opcion1 == 1) {
                     std::cout << "\nIngrese el titulo : ";
                     std::string titulo = leerString();
@@ -108,8 +128,8 @@ int main() {
                 std::cout << "1- Crear usuario" << std::endl;
                 std::cout << "2- Buscar usuario"<< std::endl;
                 std::cout << "3- Eliminar usuario" << std::endl;
-                int opcion = leerInt();
-                if (opcion == 1) {
+                int opcion1 = leerInt(0);
+                if (opcion1 == 1) {
                     std::cout << "\nIngrese el nombre: ";
                     std::string nombre = leerString();
                     std::cout << "\nIngrese el id: ";
@@ -128,11 +148,10 @@ int main() {
 
             }
         }
-
-
-
-
-
     }while(opcion != 6);
+}
+
+int main() {
+    start();
     return 0;
 }
