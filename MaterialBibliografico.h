@@ -6,21 +6,21 @@
 #define MATERIALBIBLIOGRAFICO_H
 #include <string>
 
+using namespace std;
+
 class MaterialBibliografico {
 protected:
-    std::string nombre;
-    std::string isbn;
-    std::string autor;
-    int diff;
+    string nombre;
+    int isbn;
+    string autor;
 
 public:
-    MaterialBibliografico(const std::string &nombre, const std::string &isbn, const std::string &autor, const int &diff);
+    MaterialBibliografico(const string &nombre, const int &isbn, const string &autor);
 
     virtual void mostrarInfo();
-    std::string getNombre();
-    std::string getIsbn();
-    std::string getAutor();
-    int getdiff();
+    string getNombre();
+    int getIsbn();
+    string getAutor();
     void imprimirMaterial() const;
     virtual ~MaterialBibliografico() = default;
 };

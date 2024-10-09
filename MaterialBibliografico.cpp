@@ -1,34 +1,30 @@
 #include "MaterialBibliografico.h"
 #include <iostream>
+using namespace std;
 
-MaterialBibliografico::MaterialBibliografico(const std::string &nombre, const std::string &isbn, const std::string &autor, const int &diff) {
+MaterialBibliografico::MaterialBibliografico(const string &nombre, const int &isbn, const string &autor) {
     this->nombre = nombre;
     this->isbn = isbn;
     this->autor = autor;
-    this->diff = diff;
 }
 
-// Getters
-std::string MaterialBibliografico::getAutor() {
+string MaterialBibliografico::getAutor() {
     return this->autor;
 }
 
-std::string MaterialBibliografico::getNombre() {
+string MaterialBibliografico::getNombre() {
     return this->nombre;
 }
 
-std::string MaterialBibliografico::getIsbn() {
+int MaterialBibliografico::getIsbn() {
     return this->isbn;
 }
 
-int MaterialBibliografico::getdiff() {
-    return this->diff;
-}
 
 void MaterialBibliografico::mostrarInfo() {
-    std::cout << " \tNombre: " << this->nombre << std::endl;
-    std::cout << "\tAutor: " << this->autor << std::endl;
-    std::cout << "\tISBN: " << this->isbn << std::endl;
+    cout << " \tNombre: " << this->nombre << endl;
+    cout << "\tAutor: " << this->autor << endl;
+    cout << "\tISBN: " << this->isbn << endl;
 }
 
 

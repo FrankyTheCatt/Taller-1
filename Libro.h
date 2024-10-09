@@ -2,15 +2,15 @@
 #define LIBRO_H
 
 #include "MaterialBibliografico.h"
+using namespace std;
 
 class Libro : public MaterialBibliografico {
 private:
-    std::string resumen;
-    std::string fechapublicacion;
+    string resumen;
+    string fechapublicacion;
 
 public:
-    Libro(const std::string &nombre, const std::string &isbn, const std::string &autor, const std::string &resumen,
-          int diff, const std::string &fechapublicacion);
+    Libro(const string &nombre, const int &isbn, const string &autor, const string &resumen, const string &fechapublicacion);
     void mostrarInfo() override;
 };
 

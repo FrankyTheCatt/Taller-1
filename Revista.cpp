@@ -1,13 +1,15 @@
 #include "Revista.h"
 #include <iostream>
 
-Revista::Revista(const std::string &nombre, const std::string &isbn, const std::string &autor, int diff, const std::string &numeroEdicion, const std::string &mesPublicacion)
-    : MaterialBibliografico(nombre, isbn, autor, diff), numeroEdicion(numeroEdicion), mesPublicacion(mesPublicacion) {
+using namespace std;
+
+Revista::Revista(const string &nombre, const int &isbn, const string &autor, const string &numeroEdicion, const int &mesPublicacion)
+    : MaterialBibliografico(nombre, isbn, autor), numeroEdicion(numeroEdicion), mesPublicacion(mesPublicacion) {
 }
 
 void Revista::mostrarInfo() {
     MaterialBibliografico::mostrarInfo();
 
-    std::cout << "\tNumero Edicion: " << this->numeroEdicion << std::endl;
-    std::cout << "\tMes Publicacion: " << this->mesPublicacion << std::endl;
+    cout << "\tNumero Edicion: " << this->numeroEdicion << endl;
+    cout << "\tMes Publicacion: " << this->mesPublicacion << endl;
 }

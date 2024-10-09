@@ -1,8 +1,10 @@
 #include "Libro.h"
 #include <iostream>
 
-Libro::Libro(const std::string &nombre, const std::string &isbn, const std::string &autor, const std::string &resumen, int diff, const std::string &fechapublicacion)
-    : MaterialBibliografico(nombre, isbn, autor, diff), resumen(resumen), fechapublicacion(fechapublicacion) {
+using namespace std;
+
+Libro::Libro(const string &nombre, const int &isbn, const string &autor, const string &resumen, const string &fechapublicacion)
+    : MaterialBibliografico(nombre, isbn, autor), resumen(resumen), fechapublicacion(fechapublicacion) {
 }
 
 void Libro::mostrarInfo() {

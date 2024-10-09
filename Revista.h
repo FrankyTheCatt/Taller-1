@@ -2,14 +2,17 @@
 #define REVISTA_H
 
 #include "MaterialBibliografico.h"
+using namespace std;
 
 class Revista : public MaterialBibliografico {
 private:
-    std::string numeroEdicion;
-    std::string mesPublicacion;
+    string numeroEdicion;
+    int mesPublicacion;
 
 public:
-    Revista(const std::string &nombre, const std::string &isbn, const std::string &autor, int diff, const std::string &numeroEdicion, const std::string &mesPublicacion);
+    Revista(const string &nombre, const int &isbn, const string &autor, const string &numeroEdicion, const int &mesPublicacion);
+
+
     void mostrarInfo() override;
 };
 
