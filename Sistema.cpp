@@ -16,14 +16,24 @@ Sistema::Sistema() {
     }
 }
 
-MaterialBibliografico *buscarMaterial() {
+MaterialBibliografico* busquedaMaterial(const string & string) {
+
 }
 
-
-void revisarMaterial(std::string b) {
-    MaterialBibliografico *a = buscarMaterial(b);
-    a->mostrarInfo();
+void buscarMaterial() {
+    string opcion;
+    string busqueda;
+    cout << "1- Nombre " << endl;
+    cout << "2- Autor " << endl;
+    cout << "Ingrese el criterio de busqueda: " << endl;
+    getline(cin, opcion);
+    if (opcion == "1") {
+        cout << "Ingrese el nombre del material: " << endl;
+        getline(cin, busqueda);
+        MaterialBibliografico* b = busquedaMaterial(busqueda);
+    }
 }
+
 
 void eliminarMaterial(MaterialBibliografico *material) {
     for (int i = 0; i < 100; i++) {
@@ -51,14 +61,17 @@ int buscarEspacioUsuario() {
     return -1;
 }
 
-int toInt(const string & isbn) {
+int toInt(const string isbn) {
     int num;
-    try{
-        num = stoi(isbn);
-        return num;
-    }
-    catch (const std::invalid_argument &e){
-        return -1;
+    bool onf = true;
+    while (true) {
+        try{
+            num = stoi(isbn);
+            return num;
+        }
+        catch (const invalid_argument &e){
+            onf = false;
+        }
     }
 }
 
@@ -188,16 +201,16 @@ void eliminarUsuario(std:: string b) {
 void mostrarMenu() {
     bool on = true;
     while (on) {
-        std::string opcion;
-        std::cout << "\nMenu biblioteca: \n"
+        string opcion;
+        cout << "\nMenu biblioteca: \n"
                      "1- Agregar Material\n"
                      "2- Mostrar lista de material\n"
                      "3- Buscar material\n"
                      "4- Prestar y devolver material\n"
                      "5- Gestion de usuarios\n"
                      "6- Salir...\n";
-        std::cout << "Seleccione su opcion -> ";
-        std::getline(std::cin, opcion);
+        cout << "Seleccione su opcion -> ";
+        getline(cin, opcion);
         switch (opcion) {
             case "1": {
                 agregarMaterial();
@@ -215,10 +228,11 @@ void mostrarMenu() {
                 gestionUsurios();
             }
             case "6": {
-                std::cout << "Saliendo..." << std::endl;
+                cout << "Saliendo..." << endl;
                 on = false;
             }
         }
     }
 }
+
 
