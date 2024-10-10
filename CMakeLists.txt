@@ -12,4 +12,5 @@ add_executable(Ayudantia69 main.cpp
         Usuario.h
         Usuario.cpp
         Sistema.h
-        Sistema.cpp)
+        Sistema.cpp
+        main.cpp)
