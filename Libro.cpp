@@ -13,3 +13,6 @@ void Libro::mostrarInfo() {
     std::cout << "\tFecha publicacion: " << this->fechapublicacion << std::endl;
     std::cout << "\n" << std::endl;
 }
+
+
+
