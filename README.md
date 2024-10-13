@@ -40,7 +40,7 @@ El sistema permite guardar y cargar la información de la biblioteca y los usuar
 
 Para compilar y ejecutar el programa, utiliza los siguientes comandos:
 
-g++ -o biblioteca MaterialBibliografico.cpp Libro.cpp Revista.cpp Usuario.cpp Sistema.cpp main.cpp ./biblioteca.exe
+g++ -o biblioteca MaterialBibliografico.cpp Libro.cpp Revista.cpp Usuario.cpp Sistema.cpp main.cpp ./sistemaBiblioteca.exe
 
 ### Ejemplo de Objetos Creados en el `main`
 
