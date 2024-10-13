@@ -3,7 +3,7 @@ Martina Miranda, 21.872.747-6, martina.miranda@alumnos.ucn.cl, Paralelo C1.
 
 Nicolas Galleguillos, , 21.764.662-6 nicolas.galleguillos03@alumnos.ucn.cl, Paralelo C1.
 
-# Simulador de Biblioteca Digital
+# Biblioteca digital
 
 Este proyecto consiste en un simulador de biblioteca digital que permite realizar diversas acciones, como la gestión de materiales bibliográficos y usuarios, la búsqueda de libros y revistas, y la administración de préstamos y devoluciones.
 
@@ -33,18 +33,17 @@ El sistema permite guardar y cargar la información de la biblioteca y los usuar
 - **Lenguaje de Programación:** C++
 - **Compilador:** g++
 - **Estructura del Código:**
-    - El código está organizado en múltiples archivos `.cpp` y `.h` para mantener una estructura modular y escalable.
+    - El código está organizado en múltiples archivos `.cpp` y `.h` para mantener una estructura modular y ordenada.
     - Uso de punteros y arrays estáticos para la gestión de la memoria dinámica.
 
 ## Ejecución del Programa
 
 Para compilar y ejecutar el programa, utiliza los siguientes comandos:
 
-g++ -o biblioteca MaterialBibliografico.cpp Libro.cpp Revista.cpp Usuario.cpp Sistema.cpp main.cpp ./sistemaBiblioteca.exe
+g++ -o Taller1 main.cpp Sistema.cpp Libro.cpp Revista.cpp Usuario.cpp MaterialBibliografico.cpp
 
 ### Ejemplo de Objetos Creados en el `main`
 
-Menu* sistema = new Sistema(); sistema->MostrarMenu();
-
+Sistema* sistema = new Sistema(); sistema->MostrarMenu();
 
 El objeto `sistema` de tipo `sistema` gestiona las interacciones con el usuario a través de un menú en la consola.
