@@ -385,14 +385,14 @@ void Sistema::LeerMateriales(const string &linea) {
             string fechapublicacion = splits[5];
             Libro* libro = new Libro(nombre, isbn, autor, resumen, fechapublicacion);
             biblioteca[buscarEspacio()] = libro;
-            cout << "El libro " << libro->getNombre() << " se agrego con exito" << endl;
+            cout << "El Libro " << libro->getNombre() << " se agrego con exito" << endl;
         }
         else if (tipo == "revista") {
             string numEdicion = splits[4];
             int mesPublicacion = toInt(splits[5]);
             Revista* revista = new Revista(nombre, isbn, autor, numEdicion, mesPublicacion);
             biblioteca[buscarEspacio()] = revista;
-            cout << "La revista " << revista->getNombre() << " se agrego con exito" << endl;
+            cout << "La Revista " << revista->getNombre() << " se agrego con exito" << endl;
         }
         else {
             cout << "Tipo no valido" << endl;
