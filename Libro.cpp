@@ -9,9 +9,9 @@ Libro::Libro(const string &nombre, const int &isbn, const string &autor, const s
 
 void Libro::mostrarInfo() {
     MaterialBibliografico::mostrarInfo();
-    std::cout << "\tResumen: " << this->resumen << std::endl;
-    std::cout << "\tFecha publicacion: " << this->fechapublicacion << std::endl;
-    std::cout << "\n" << std::endl;
+    cout << "\tResumen: " << this->resumen << endl;
+    cout << "\tFecha publicacion: " << this->fechapublicacion << endl;
+    cout << "\n";
 }
 
 

@@ -22,11 +22,8 @@ private:
 
     MaterialBibliografico* busquedaMaterial(string nombre);
     ~Sistema();
-
     void LeerUsuario(const string & linea);
-
     void LeerMateriales(const string & string);
-
     void cargarDatos();
     void agregarMaterial();
     void prestarDevolver();
@@ -43,6 +40,8 @@ private:
     static Usuario *buscarUsuario(std::string id);
     void imprimirUsuario(std::string b);
     void eliminarMaterial(MaterialBibliografico *material);
+
+
     void eliminarUsuario(std::string b);
 };
 

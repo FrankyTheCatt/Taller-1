@@ -12,4 +12,5 @@ void Revista::mostrarInfo() {
 
     cout << "\tNumero Edicion: " << this->numeroEdicion << endl;
     cout << "\tMes Publicacion: " << this->mesPublicacion << endl;
+    cout << "\n";
 }

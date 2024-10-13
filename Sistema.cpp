@@ -11,8 +11,6 @@
 using namespace std;
 MaterialBibliografico *biblioteca[100];
 Usuario *listaUsuarios[100];
-int numLibros = 0;
-int numUsuarios = 0;
 
 Sistema::Sistema() {
     numLibros = 0;
@@ -120,8 +118,10 @@ void Sistema::agregarMaterial() {
         int id = buscarEspacio();
 
         biblioteca[id] = new Libro(nombre, isbnNum, autor, resumen, fecha);
-
+        ofstream txt("materiales.txt", ios::app);
+        txt << "libro" << "-" << nombre << "-" << isbnNum << "-" << autor << "-" << resumen << "-" << fecha << "\n";
         cout << "El libro " << biblioteca[id]->getNombre() << " se agrego con exito" << endl;
+
     }
     else if (tipo == "revista") {
         cout << "Ingrese el nombre de la revista: ";
@@ -154,6 +154,8 @@ void Sistema::agregarMaterial() {
 
         int id = buscarEspacio();
         biblioteca[id] = new Revista(nombre, isbnNum, autor, numEdicion, mesNum);
+        ofstream txt("materiales.txt", ios::app );
+        txt << "revista" << "-" << nombre << "-" << isbnNum << "-" << autor << "-" << numEdicion << "-" << mesNum << "\n";
         cout << "La revista " << biblioteca[id]->getNombre() << " se agrego con exito" << endl;
     }
     else {
@@ -188,6 +190,7 @@ int Sistema::buscarEspacioUsuario() {
 void Sistema::crearUsuario() {
     string nombre;
     string id;
+    string linea;
     int a;
     cout << "Ingrese el nombre del usuario: ";
     getline(cin, nombre);
@@ -196,9 +199,11 @@ void Sistema::crearUsuario() {
     Usuario *usuario = new Usuario(nombre, id);
     a = buscarEspacioUsuario();
     listaUsuarios[a] = usuario;
-    std::cout << "Usuario creado correctamente... " << std::endl;
+    ofstream txt("usuarios.txt", ios::app);
+    txt << nombre << "-" << id << "\n";
+    cout << "Usuario creado correctamente... " << endl;
 }
-void Sistema::imprimirUsuario(std:: string b) {
+void Sistema::imprimirUsuario(string b) {
     Usuario *usuario = buscarUsuario(b);
     if (usuario == nullptr) {
         cout << "Usuario no existe" << endl;
@@ -207,6 +212,19 @@ void Sistema::imprimirUsuario(std:: string b) {
         usuario->mostrarInfo();
     }
 
+}
+vector<string> split(const string &str, char delimiter)
+{
+    vector<string> splits;
+    string parte;
+    stringstream ss(str);
+
+    while (getline(ss, parte, delimiter))
+    {
+        splits.push_back(parte);
+    }
+
+    return splits;
 }
 void Sistema::prestarDevolver() {
     string opcion;
@@ -239,6 +257,13 @@ void Sistema::prestarDevolver() {
         }
     }
     else if (opcion == "2") {
+        ifstream txt("materiales.txt");
+        ofstream txt2("temp1.txt");
+        string linea;
+        if (!txt.is_open() || !txt2.is_open()) {
+            cout << "Error al abrir los archivos" << endl;
+            return;
+        }
         cout << "Ingrese el nombre del material a pedir: ";
         getline(cin, nombre);
         cout << "Ingrese el id del usuario: ";
@@ -249,7 +274,6 @@ void Sistema::prestarDevolver() {
         }
         else {
             MaterialBibliografico* m = Sistema::busquedaMaterial(nombre);
-
             if (m == nullptr) {
                 cout << "Material no encontrado" << endl;
             }
@@ -260,20 +284,52 @@ void Sistema::prestarDevolver() {
                         biblioteca[i] = nullptr;
                     }
                 }
+                while (getline(txt, linea)) {
+                    vector<string> splits = split(linea, '-');
+                    string id1 = splits[1];
+                    if (id1 != nombre) {
+                        txt2 << linea << endl;
+                    }
+                }
+                txt.close();
+                txt2.close();
+                remove("materiales.txt");
+                rename("temp1.txt", "materiales.txt");
                 cout << "El material " << m->getNombre() << " se presto con exito" << endl;
             }
         }
     }
 }
-void Sistema::eliminarUsuario(string b) {
+
+void Sistema::eliminarUsuario(string id) {
+    ifstream txt("usuarios.txt");
+    ofstream txt2("temp.txt");
+    string linea;
+    if (!txt.is_open() || !txt2.is_open()) {
+        cout << "Error al abrir los archivos." << endl;
+        return;
+    }
     for (int i = 0; i < 100; i++) {
-        if (listaUsuarios[i] != nullptr && listaUsuarios[i]->getId() == b) {
+        if (listaUsuarios[i] != nullptr && listaUsuarios[i]->getId() == id) {
             listaUsuarios[i] = nullptr;
             delete listaUsuarios[i];
-            std::cout << "Usuario eliminado correctamente...";
+            cout << "Usuario eliminado correctamente...";
         }
     }
+
+    while (getline(txt, linea)) {
+        vector<string> splits = split(linea, '-');
+        string id1 = splits[1];
+        if (id1 != id) {
+            txt2 << linea << endl;
+        }
+    }
+    txt.close();
+    txt2.close();
+    remove("usuarios.txt");
+    rename("temp.txt", "usuarios.txt");
 }
+
 void Sistema::gestionUsuarios() {
     string opcion1;
     string id;
@@ -336,19 +392,7 @@ void Sistema::mostrarMenu() {
     }
 }
 
-vector<string> split(const string &str, char delimiter)
-{
-    vector<std::string> splits;
-    string parte;
-    stringstream ss(str);
 
-    while (std::getline(ss, parte, delimiter))
-    {
-        splits.push_back(parte);
-    }
-
-    return splits;
-}
 void Sistema::LeerUsuario(const string &linea) {
     vector<string> splits = split(linea, '-');
     int id1;
@@ -427,7 +471,6 @@ void Sistema::cargarDatos(){
     {
         cout << "El archivo de materiales no existe" << endl;
     }
-
     string linea1;
     while (getline(materiales, linea1))
     {
