@@ -47,3 +47,14 @@ g++ -o Taller1 main.cpp Sistema.cpp Libro.cpp Revista.cpp Usuario.cpp MaterialBi
 Sistema* sistema = new Sistema(); sistema->MostrarMenu();
 
 El objeto `sistema` de tipo `sistema` gestiona las interacciones con el usuario a través de un menú en la consola.
+
+## Objetos en los txt
+
+En el archivo usuarios.txt estan los siguientes usuarios
+`Marti-12`
+`Nicowo-69`
+En el archivo materiales.txt estan los siguientes usuarios
+`libro-Las 50 sombras de grei-38129-taylorswift-habian 50 sombras-10/10/24`
+`revista-Cosas que no sabias de los gatos-123819-nicowo-38129-11`
+`libro-Cosas que descubrir-12394-Yo-Hola-28/03`
+
